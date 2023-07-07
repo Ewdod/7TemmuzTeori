@@ -76,7 +76,7 @@ namespace _7TemmuzTeori.Data
                 entity.Property(e => e.Soyad).HasMaxLength(50);
 
                 entity.HasOne(d => d.DogumYeri)
-                    .WithMany(p => p.Ogrenciler)
+                    .WithMany(p => p.Doganlar)
                     .HasForeignKey(d => d.DogumYeriId)
                     .HasConstraintName("FK__Ogrencile__Dogum__3C69FB99");
 

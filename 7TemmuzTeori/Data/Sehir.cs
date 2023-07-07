@@ -7,7 +7,7 @@ namespace _7TemmuzTeori.Data
     {
         public Sehir()
         {
-            Ogrenciler = new HashSet<Ogrenci>();
+            Doganlar = new HashSet<Ogrenci>();
             Sevenler = new HashSet<Ogrenci>();
         }
 
@@ -17,7 +17,7 @@ namespace _7TemmuzTeori.Data
         public int Nufus { get; set; }
 
         public virtual Bolge Bolge { get; set; } = null!;
-        public virtual ICollection<Ogrenci> Ogrenciler { get; set; }
+        public virtual ICollection<Ogrenci> Doganlar { get; set; }
 
         public virtual ICollection<Ogrenci> Sevenler { get; set; }
     }
