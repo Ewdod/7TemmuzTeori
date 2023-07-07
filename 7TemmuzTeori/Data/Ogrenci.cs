@@ -8,7 +8,7 @@ namespace _7TemmuzTeori.Data
         public Ogrenci()
         {
             TakimUyeleri = new HashSet<Ogrenci>();
-            FavoriSehirler = new HashSet<Sehir>();
+            Sehirler = new HashSet<Sehir>();
         }
 
         public int Id { get; set; }
@@ -28,6 +28,6 @@ namespace _7TemmuzTeori.Data
         public virtual IletisimBilgi? IletisimBilgileri { get; set; }
         public virtual ICollection<Ogrenci> TakimUyeleri { get; set; }
 
-        public virtual ICollection<Sehir> FavoriSehirler { get; set; }
+        public virtual ICollection<Sehir> Sehirler { get; set; }
     }
 }

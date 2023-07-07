@@ -85,7 +85,7 @@ namespace _7TemmuzTeori.Data
                     .HasForeignKey(d => d.TakimLideriId)
                     .HasConstraintName("FK__Ogrencile__Takim__3D5E1FD2");
 
-                entity.HasMany(d => d.FavoriSehirler)
+                entity.HasMany(d => d.Sehirler)
                     .WithMany(p => p.Sevenler)
                     .UsingEntity<Dictionary<string, object>>(
                         "FavoriSehirler",
