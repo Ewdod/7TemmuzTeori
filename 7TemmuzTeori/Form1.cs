@@ -107,5 +107,94 @@ namespace _7TemmuzTeori
 
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            dataGridView1.DataSource = db.Ogrenciler
+                 .Include(e => e.IletisimBilgileri)
+                 .Select(e => new
+                 {
+                     tamad = e.Ad + " " + e.Soyad,
+                     eposta = e.IletisimBilgileri.Email,
+                     telefon = e.IletisimBilgileri.Telefon,
+                     adres = e.IletisimBilgileri.Adres
+
+
+                 })
+                 .ToList();
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.Ogrenciler
+                .Where(e => e.Cinsiyet == "e")
+                .Select(e => new
+                {
+                    e.Ad,
+                    favoriSehirler = string.Join(", ", e.Sehirler.OrderBy(s => s.Id).Select(s => s.SehirAd))
+
+                })
+                .ToList();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.Ogrenciler
+                    .Where(e => e.DogumYeri != null)
+                    .Select(e => new
+                    {
+                        e.Ad,
+                        e.DogumYeri.SehirAd,
+                        dogumNufus = e.DogumYeri.Nufus
+                    })
+                   .ToList();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.Bolgeler
+                    //.Include(e => e.Sehirler)
+                    .Select(e => new
+                    {
+                        e.BolgeAd,
+                        sehirler = (e.Sehirler.Select(s => s.SehirAd)).Count()
+                    })
+                   .ToList();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.Bolgeler.Include(e => e.Sehirler)
+            //.Where(e => e.BolgeAd != null)
+            .Select(e => new
+            {
+                e.BolgeAd,
+                OgrenciIsimleri = string.Join(", ", e.Sehirler.SelectMany(s => s.Doganlar).Select(o => o.Ad))
+            })
+            .ToList();
+
+
+
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.Ogrenciler
+                 //.Include(e => e.IletisimBilgileri)
+                 .Select(e => new
+                 {
+                     tamad = e.Ad + " " + e.Soyad,
+                     eposta = e.IletisimBilgileri.Email,
+                     telefon = e.IletisimBilgileri.Telefon,
+                     adres = e.IletisimBilgileri.Adres
+
+
+                 })
+                 .ToList();
+        }
     }
 }
