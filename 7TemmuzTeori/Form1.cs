@@ -184,7 +184,8 @@ namespace _7TemmuzTeori
         private void button12_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = db.Ogrenciler
-                 //.Include(e => e.IletisimBilgileri)
+                 .Include(e => e.IletisimBilgileri)
+
                  .Select(e => new
                  {
                      tamad = e.Ad + " " + e.Soyad,
@@ -194,7 +195,7 @@ namespace _7TemmuzTeori
 
 
                  })
-                 .ToList();
+                 .ToList();//.Where(e);
         }
     }
 }
